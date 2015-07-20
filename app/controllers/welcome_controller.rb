@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
 
-  after_action :allow_iframe, only: :index
-
   def index
     day = Date::DAYNAMES[Date.new.day].downcase
     schedule = YAML.load_file("#{Rails.root.to_s}/config/schedule.yml")
@@ -24,8 +22,4 @@ class WelcomeController < ApplicationController
     end
   end
 
-  private
-    def allow_iframe
-      response.headers['X-Frame-Options'] = 'ALLOWALL'
-    end
 end
