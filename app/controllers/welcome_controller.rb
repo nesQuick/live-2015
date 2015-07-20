@@ -26,6 +26,6 @@ class WelcomeController < ApplicationController
 
   private
     def allow_iframe
-      response.headers.except! 'X-Frame-Options'
+      response.headers['X-Frame-Options'] = 'ALLOWALL'
     end
 end
